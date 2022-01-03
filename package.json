@@ -1,0 +1,8 @@
+{
+  "name": "@sa-mp/amx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "author": "dev2alert",
+  "license": "ISC"
+}
