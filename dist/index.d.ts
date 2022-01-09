@@ -4,16 +4,14 @@ export interface NativeResult extends Array<Value> {
     retval: number;
 }
 
-export type PublicCallback = (...values: Value[]) => number | void;
+export type PublicCallback = (...params: Value[]) => number | void;
 
 export interface PublicListener {
     paramTypes: string;
     callback: PublicCallback;
 }
 
-export interface PublicEvents {
-    [eventName: string]: PublicListener[];
-}
+export type PublicEvents = Record<string, PublicListener[]>;
 
 /**
  * Call native function.
