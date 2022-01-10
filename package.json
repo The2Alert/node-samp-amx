@@ -1,6 +1,6 @@
 {
   "name": "@sa-mp/amx",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "description": "AMX API for NodeSamp.",
   "keywords": ["nodesamp", "sa-mp", "samp", "amx", "pawn"],
   "repository": "github:dev2alert/node-samp-amx",
