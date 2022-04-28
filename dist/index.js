@@ -1,1 +1,1 @@
-module.exports = amx;
+module.exports = samp.amx;

@@ -15,7 +15,7 @@ export type PublicEvents = Record<string, PublicListener[]>;
 
 /**
  * Call native function.
- * @param name Name.
+ * @param name Native name.
  * @param paramTypes Types of parameters.
  * 
  * Types:
@@ -47,20 +47,32 @@ export type PublicEvents = Record<string, PublicListener[]>;
  * @example
  * const [x, y, z] = amx.callNative("GetPlayerPos", "iFFF", playerid);
  */
-export function callNative(name: string, paramTypes: string, ...params: Value[]): NativeResult;
+export function callNative(name: string, paramTypes?: string, ...params: Value[]): NativeResult;
 
 /**
  * Similar to the `callNative` function, except that float is returned.
- * @param name Name.
+ * @param name Native name.
  * @param paramTypes Types of parameters.
  * @param params Parameters.
  * @return Return value and referenced parameters.
  */
-export function callNativeInFloat(name: string, paramTypes: string, ...params: Value[]): NativeResult;
+export function callNativeInFloat(name: string, paramTypes?: string, ...params: Value[]): NativeResult;
 
 /**
  * Register public function listener.
- * @param eventName Event name.
+ * @param name Public name.
+ * @param callback Callback.
+ * @return Return listener.
+ * @example
+ * amx.onPublicCall("OnGameModeInit", () => {
+ *     console.log("Hello, world!");
+ * });
+ */
+export function onPublicCall(name: string, callback: PublicCallback): PublicListener;
+
+/**
+ * Register public function listener.
+ * @param name Public name.
  * @param paramTypes Types of parameters.
  * 
  * Types:
@@ -82,13 +94,13 @@ export function callNativeInFloat(name: string, paramTypes: string, ...params: V
  *     amx.callNative("SendClientMessage", "iis", playerid, 0x71f5b9AA, `Text: ${text}.`);
  * });
  */
-export function onPublicCall(eventName: string, paramTypes: string, callback: PublicCallback): PublicListener;
+export function onPublicCall(name: string, paramTypes: string, callback: PublicCallback): PublicListener;
 
 /**
  * Remove public function listeners.
- * @param eventName Event name.
+ * @param name Public name.
  * @return Return whether deleted.
  */
-export function removePublic(eventName: string): boolean;
+export function removePublic(name: string): boolean;
 
 export const publicEvents: PublicEvents;
